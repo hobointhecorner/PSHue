@@ -17,7 +17,7 @@ Import-Module PSHue
 The first time the module is imported, it should request the IP or DNS name of your Hue Bridge.  Once entered, it will ask that you press the Link button on the top of your Hue Bridge to authorize the module's access to the Bridge.
 
 ## Examples
-###Get all hue lights
+### Get all hue lights
 ```PowerShell
 Get-HueLight
 ```
@@ -27,7 +27,7 @@ Get-HueLight
 Get-HueRoom Bedroom | GetHueLight
 ```
 
-###Turn a light on
+### Turn a light on
 ```PowerShell
 Get-HueLight 'Ceiling Light' | Set-HueState -PowerState On
 ```

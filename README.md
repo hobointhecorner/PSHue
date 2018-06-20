@@ -4,6 +4,15 @@ PowerShell toolkit for controlling Philips Hue lights
 ## Description
 This toolkit can be used to get rooms, scenes, and lights associated with a Hue Bridge and control them.  This can be useful for binding Scenes or power states to macro keys on your keyboard or for orchestrating complex automation sequences.
 
+To get a list of available commands, use the following:
+```PowerShell
+Get-Command -Module PSHue
+```
+To get more information about a specific command, use the following:
+```PowerShell
+Get-Help <<Command>>
+```
+
 ## Setup
 The module can be imported with Import-Module using the path to the .psd file in the same directory as the rest of the module files:
 ```PowerShell

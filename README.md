@@ -7,10 +7,18 @@ This toolkit can be used to get rooms, scenes, and lights associated with a Hue 
 ## Setup
 The module can be imported with Import-Module using the path to the .psd file in the same directory as the rest of the module files:
 ```PowerShell
-Import-Module c:\PSHue\PSHue.psd
+Import-Module <<path to PSHue module files>>\PSHue.psd
 ```
-It can be also be imported by name by creating a directory at either %programfiles%\WindowsPowerShell\Modules\PSHue or %UserProfile%\Documents\WindowsPowerShell\Modules\PSHue and copying the module files into the directory you created
+It can be also be imported by name by creating a directory at either $env:programfiles\WindowsPowerShell\Modules\PSHue or $env:userprofile\Documents\WindowsPowerShell\Modules\PSHue and copying the module files into the directory you created
 ```PowerShell
+#Copy all files from the repo into their own folder, then enter the path to that folder in the below variable:
+$moduleSource = <<Directory containing ONLY PSHue module files>>
+
+#Enter the desired module destination in the below variable, generally either $env:programfiles\WindowsPowerShell\Modules\PSHue or $env:userprofile\Documents\WindowsPowerShell\Modules\PSHue
+$moduleDestination = <<Module directory>>
+
+if (!(Test-Path $moduleDestination)) { New-Item $moduleDestination -ItemType Directory -Force }
+Copy-Item (Join-Path $moduleSource '*') $moduleDestination -Recurse -Force
 Import-Module PSHue
 ```
 

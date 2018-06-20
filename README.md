@@ -24,7 +24,7 @@ Get-HueLight
 
 ### Get a list of lights for a room
 ```PowerShell
-Get-HueRoom Bedroom | GetHueLight
+Get-HueRoom Bedroom | Get-HueLight
 ```
 
 ### Turn a light on

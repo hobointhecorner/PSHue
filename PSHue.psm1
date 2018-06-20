@@ -581,6 +581,9 @@ function Get-HueRoom
     .PARAMETER BrightnessPercent
     The 0-100 value representing the brightness of the light(s)
 
+    .PARAMETER TransitionTime
+    TimeSpan object representing the transition time to the defined state.  Also accepts strings in the format "hh:MM:ss.mmmm" where h is hour, M is minute, s is seconds, and m is milliseconds
+
     .PARAMETER Effect
     Turns on special light effects
     
@@ -641,11 +644,13 @@ function Set-HueState
         [object[]]$HueObject, 
 
         [ValidateSet('On','Off')]
-        [string]$PowerState,
-            
+        [string]$PowerState,            
+
         [ValidateRange(0,100)]
-        [int]$BrightnessPercent,        
+        [int]$BrightnessPercent,       
         
+        [timespan]$TransitionTime, 
+                
         [ValidateSet('ColorLoop','None')]
         [string]$Effect,
 
@@ -664,7 +669,7 @@ function Set-HueState
         
         [ValidateRange(0,500)]
         [int]$Temperature,
-        
+
         [ValidateNotNullOrEmpty()]
         [HuePref]$HuePref = $defaultHuePref
     )
@@ -683,6 +688,9 @@ function Set-HueState
 
         #Set brightness.  Max value in the Hue API is 254
         if ($BrightnessPercent) { $body.Add('bri',([math]::Round(($BrightnessPercent * .01) * 254))) }
+        
+        #Set transition time. API accepts values in chunks of 100ms
+        if ($TransitionTime) { $body.Add('transitiontime',[math]::Round($TransitionTime.TotalMilliseconds/100)) }
 
         #Set light color
         if ($Effect)          { $body.Add('effect',$Effect.ToLower()) }
@@ -694,7 +702,7 @@ function Set-HueState
             if ($Saturation) { $body.Add('sat',$Saturation) }            
             if ($Hue) { $body.Add('hue',$Hue) }
         }
-        
+
         if ($body -eq @{}) { throw "You must define a setting to change." }
         $body = Format-HueRequestBody $body
     }
@@ -707,8 +715,8 @@ function Set-HueState
             switch ($o.GetType().FullName)
             {
                 "HueLight" { $resource = "lights/$($o.Id)/state" ; break }
-                "HueRoom" { $resource = "groups/$($o.Id)/action" ; break }
-                default { throw "Could not detect object type $($o.gettype().fullname))" }
+                "HueRoom"  { $resource = "groups/$($o.Id)/action" ; break }
+                default    { throw "Could not detect object type $($o.gettype().fullname))" }
             }
 
             Invoke-HueRequest @param_HueRequest -Resource $resource -Method PUT -Body $body

@@ -7,7 +7,7 @@ This toolkit can be used to get rooms, scenes, and lights associated with a Hue 
 ## Setup
 The module can be imported with Import-Module using the path to the .psd file in the same directory as the rest of the module files:
 ```PowerShell
-Import-Module <<path to PSHue module files>>\PSHue.psd
+Import-Module <<path to PSHue module files>>\PSHue.psd1
 ```
 It can be also be imported by name by creating a directory at either $env:programfiles\WindowsPowerShell\Modules\PSHue or $env:userprofile\Documents\WindowsPowerShell\Modules\PSHue and copying the module files into the directory you created
 ```PowerShell
@@ -50,19 +50,9 @@ Get-HueRoom Bedroom | Get-HueLight
 Get-HueLight 'Ceiling Light' | Set-HueState -PowerState On
 ```
 
-### Set the brightness of a group of lights in a room to 25%
-```PowerShell
-Get-HueRoom Bedroom | Get-HueLight Ceiling* | Set-HueState -BrightnessPercent 25
-```
-
 ### Start a scene
 ```PowerShell
 Get-HueScene Bright -RoomName 'Living Room' | Start-HueScene
-```
-
-### Start color loop on a light
-```PowerShell
-Get-HueLight 'Splash Lammp' | Set-HueState -Effect ColorLoop
 ```
 
 ### Set a light to a predefined color
@@ -70,8 +60,18 @@ Get-HueLight 'Splash Lammp' | Set-HueState -Effect ColorLoop
 Get-HueLight 'Splash Lamp' | Set-HueSate -Color Blue
 ```
 
+### Start color loop on a light
+```PowerShell
+Get-HueLight 'Splash Lammp' | Set-HueState -Effect ColorLoop
+```
+
 ### Convert an RGB value to XY notation and set all lights in a room to that color
 ```PowerShell
 $xy = Convert-RgbToXy -R 0 -G 0 -B 255
 Get-HueRoom 'Living Room' | Get-HueLight | Set-HueState -X $xy.x -Y $xy.y
+```
+
+### Dim the brightness of a group of lights in a room to 10% over the next 30 minutes
+```PowerShell
+Get-HueRoom Bedroom | Get-HueLight Ceiling* | Set-HueState -BrightnessPercent 10 -TransitionTime "00:30:00.0000"
 ```

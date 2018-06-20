@@ -32,6 +32,11 @@ Get-HueRoom Bedroom | Get-HueLight
 Get-HueLight 'Ceiling Light' | Set-HueState -PowerState On
 ```
 
+### Set the brightness of a group of lights in a room to 25%
+```PowerShell
+Get-HueRoom Bedroom | Get-HueLight Ceiling* | Set-HueState -BrightnessPercent 25
+```
+
 ### Start a scene
 ```PowerShell
 Get-HueScene Bright -RoomName 'Living Room' | Start-HueScene

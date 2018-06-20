@@ -398,9 +398,6 @@ function Connect-HueBridge
     }
 }
 
-#Sets the default HuePref to be used in Hub communications
-$defaultHuePref = Get-HuePref -ErrorAction Stop
-
 #######
 #endregion
 #######
@@ -850,3 +847,6 @@ function Start-HueScene
 #######
 #endregion
 #######
+
+#Sets the default HuePref to be used in Hub communications
+$defaultHuePref = Get-HuePref -ErrorAction Stop

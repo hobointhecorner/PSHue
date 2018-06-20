@@ -62,7 +62,7 @@ Get-HueLight 'Splash Lamp' | Set-HueSate -Color Blue
 
 ### Start color loop on a light
 ```PowerShell
-Get-HueLight 'Splash Lammp' | Set-HueState -Effect ColorLoop
+Get-HueLight 'Splash Lamp' | Set-HueState -Effect ColorLoop
 ```
 
 ### Convert an RGB value to XY notation and set all lights in a room to that color

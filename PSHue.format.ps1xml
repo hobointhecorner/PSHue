@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <ViewDefinitions>
+
+    <View>
+      <Name>HueLight</Name>
+      <ViewSelectedBy>
+        <TypeName>HueLight</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>On</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ManufacturerName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProductName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+
+    <View>
+      <Name>HueRoom</Name>
+      <ViewSelectedBy>
+        <TypeName>HueRoom</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+        </TableHeaders>
+
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              
+              <TableColumnItem>
+                <PropertyName>Lights</PropertyName>
+              </TableColumnItem>
+
+            </TableColumnItems>
+          </TableRowEntry>
+
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    
+    <View>
+      <Name>HueScene</Name>
+      <ViewSelectedBy>
+        <TypeName>HueScene</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+          <TableColumnHeader>
+          </TableColumnHeader>
+
+        </TableHeaders>
+
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              
+              <TableColumnItem>
+                <PropertyName>Room</PropertyName>
+              </TableColumnItem>
+              
+              <TableColumnItem>
+                <PropertyName>Lights</PropertyName>
+              </TableColumnItem>
+
+            </TableColumnItems>
+          </TableRowEntry>
+
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    
+  </ViewDefinitions>
+</Configuration>
